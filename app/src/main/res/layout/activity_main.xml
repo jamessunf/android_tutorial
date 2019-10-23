@@ -4,13 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="10dp"
+    android:paddingTop="15dp"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
     tools:context=".MainActivity">
 
-
-    <ListView
-        android:id="@+id/the_list"
+    <Button
+        android:id="@+id/btn_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="26dp"
-        tools:layout_editor_absoluteY="257dp" />
+        android:layout_height="wrap_content"
+        android:text="List"
+        />
+
 </RelativeLayout>

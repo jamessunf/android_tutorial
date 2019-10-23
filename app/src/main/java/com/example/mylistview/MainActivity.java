@@ -2,8 +2,11 @@ package com.example.mylistview;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
@@ -11,24 +14,23 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    private Button btnList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ListView theList = (ListView) findViewById(R.id.the_list);
+        btnList = (Button) findViewById(R.id.btn_list);
 
-        ArrayList<String> name = new ArrayList<>();
-        name.add("James");
-        name.add("Tracy");
-        name.add("William");
-        name.add("Vera");
-        name.add("Mark");
-        name.add("Lucas");
-        name.add("Anne");
+        btnList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, ListViewActivity.class);
+                startActivity(intent);
+            }
+        });
 
-        ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_expandable_list_item_1,name);
-        theList.setAdapter(adapter);
 
     }
 }
