@@ -51,23 +51,30 @@ public class CustomListAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
          ViewHolder holder = null;
-         if(convertView == null){
-             convertView = myLayoutInflater.inflate(R.layout.custom_list_item,null);
+         if(person.get(position).isSend()){
+             convertView = myLayoutInflater.inflate(R.layout.custom_item_send,null);
              holder = new ViewHolder();
-             holder.imgView = (ImageView) convertView.findViewById(R.id.img_item);
-             holder.txtTitle = (TextView) convertView.findViewById(R.id.txt_title);
-             holder.txtContant = (TextView) convertView.findViewById(R.id.txt_contant);
+             holder.imgView = (ImageView) convertView.findViewById(R.id.img_send);
+             holder.txtTitle = (TextView) convertView.findViewById(R.id.txt_send_title);
+             holder.txtContant = (TextView) convertView.findViewById(R.id.txt_send_message);
              convertView.setTag(holder);
+             holder.imgView.setImageResource(R.drawable.row_send);
+             holder.txtTitle.setText(person.get(position).getName());
+             holder.txtContant.setText(person.get(position).getMassage());
 
          }else{
 
-             holder = (ViewHolder) convertView.getTag();
+             convertView = myLayoutInflater.inflate(R.layout.custom_item_receive,null);
+             holder = new ViewHolder();
+             holder.imgView = (ImageView) convertView.findViewById(R.id.img_receive);
+             holder.txtTitle = (TextView) convertView.findViewById(R.id.txt_receive_title);
+             holder.txtContant = (TextView) convertView.findViewById(R.id.txt_receive_message);
+             convertView.setTag(holder);
+             holder.imgView.setImageResource(R.drawable.row_receive);
+             holder.txtTitle.setText(person.get(position).getName());
+             holder.txtContant.setText(person.get(position).getMassage());
 
          }
-
-         holder.imgView.setImageResource(R.drawable.row_send);
-         holder.txtTitle.setText(person.get(position).getName());
-         holder.txtContant.setText(person.get(position).getMassage());
 
         return convertView;
     }

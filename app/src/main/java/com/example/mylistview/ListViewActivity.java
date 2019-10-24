@@ -18,11 +18,11 @@ public class ListViewActivity extends Activity {
         setContentView(R.layout.activity_listview);
 
         ArrayList<Person> person = new ArrayList<>();
-        person.add(new Person("James","Test 1"));
-        person.add(new Person("Tracy","Test 2"));
-        person.add(new Person("William","Test 3"));
-        person.add(new Person("Vera","Test 4"));
-        person.add(new Person("Mark","Test 5"));
+        person.add(new Person("James",true,"Test 1"));
+        person.add(new Person("Tracy",true,"Test 2"));
+        person.add(new Person("William",false,"Test 3"));
+        person.add(new Person("Vera",true,"Test 4"));
+        person.add(new Person("Mark",false,"Test 5"));
 
         myListView = (ListView) findViewById(R.id.lst_person);
         myListView.setAdapter(new CustomListAdapter(ListViewActivity.this,person));
