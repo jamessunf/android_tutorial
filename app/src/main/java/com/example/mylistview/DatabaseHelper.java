@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "chat.db";
@@ -33,7 +35,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        sqLiteDatabase.execSQL("drop table if exists " + TABLE_NAME);
         onCreate(sqLiteDatabase);
 
     }
@@ -46,18 +48,51 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         long result = db.insert(TABLE_NAME,null,contentValues);
 
         if(result == -1)
-            return false;
+            return false;  //
         else
-            return  true;
+            return  true; //
 
 
     }
 
     public Cursor getAllData(){
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.getReadableDatabase();
         Cursor res = db.rawQuery("select * from " + TABLE_NAME, null);
         return res;
 
+    }
+
+    public Integer getV(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.getVersion();
+    }
+
+
+
+
+    public boolean updateData(String id, int send, String massage){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL_1,id);
+        contentValues.put(COL_2,send);
+        contentValues.put(COL_3,massage);
+        db.update(TABLE_NAME, contentValues,"ID=?",new String[]{ id });
+        return true;
+
+
+    }
+
+    public Integer deleteData (Person p){
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete(TABLE_NAME,"MASSAGE=?",new String[]{p.getMassage()});
+
+
+    }
+
+
+    public void deleteAll(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("delete from " + TABLE_NAME);
 
     }
 }
