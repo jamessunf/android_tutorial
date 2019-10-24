@@ -1,29 +1,20 @@
 package com.example.mylistview;
 
 public class Person {
-    private String name;
-    private boolean send;
+
+    private int send;
     private String massage;
 
-    public Person(String name, boolean send, String massage) {
-        this.name = name;
+    public Person(int send, String massage) {
         this.send = send;
         this.massage = massage;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public boolean isSend() {
+    public int getSend() {
         return send;
     }
 
-    public void setSend(boolean send) {
+    public void setSend(int send) {
         this.send = send;
     }
 

@@ -51,7 +51,7 @@ public class CustomListAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
          ViewHolder holder = null;
-         if(person.get(position).isSend()){
+         if(person.get(position).getSend() == 1){
              convertView = myLayoutInflater.inflate(R.layout.custom_item_send,null);
              holder = new ViewHolder();
              holder.imgView = (ImageView) convertView.findViewById(R.id.img_send);
@@ -59,7 +59,7 @@ public class CustomListAdapter extends BaseAdapter {
              holder.txtContant = (TextView) convertView.findViewById(R.id.txt_send_message);
              convertView.setTag(holder);
              holder.imgView.setImageResource(R.drawable.row_send);
-             holder.txtTitle.setText(person.get(position).getName());
+
              holder.txtContant.setText(person.get(position).getMassage());
 
          }else{
@@ -71,7 +71,7 @@ public class CustomListAdapter extends BaseAdapter {
              holder.txtContant = (TextView) convertView.findViewById(R.id.txt_receive_message);
              convertView.setTag(holder);
              holder.imgView.setImageResource(R.drawable.row_receive);
-             holder.txtTitle.setText(person.get(position).getName());
+
              holder.txtContant.setText(person.get(position).getMassage());
 
          }
